@@ -1,0 +1,33 @@
+{
+  "approved": false,
+  "conditionMultipliers": {
+    "good": 1.0,
+    "some_prep": 1.15,
+    "heavy_prep": 1.35
+  },
+  "interior": {
+    "unit": "rooms",
+    "bands": [
+      { "id": "1_room", "label": "1 room", "low": 400, "high": 1200 },
+      { "id": "2_3_rooms", "label": "2 to 3 rooms", "low": 900, "high": 3200 },
+      { "id": "4_5_rooms", "label": "4 to 5 rooms", "low": 2200, "high": 6500 },
+      { "id": "whole_home", "label": "Whole home", "low": 4500, "high": 15000 }
+    ]
+  },
+  "exterior": {
+    "unit": "size",
+    "bands": [
+      { "id": "one_story", "label": "1 story, up to ~2,000 sq ft", "low": 4000, "high": 8500 },
+      { "id": "two_story", "label": "2 stories, ~2,000 to 3,500 sq ft", "low": 7000, "high": 15000 },
+      { "id": "large", "label": "Large or 3 stories, 3,500+ sq ft", "low": 12000, "high": 28000 }
+    ]
+  },
+  "cabinets": {
+    "unit": "fronts",
+    "bands": [
+      { "id": "small", "label": "Up to 20 doors and drawers", "low": 1800, "high": 3800 },
+      { "id": "medium", "label": "20 to 35 doors and drawers", "low": 2800, "high": 6000 },
+      { "id": "large", "label": "35+ doors and drawers", "low": 4500, "high": 9000 }
+    ]
+  }
+}

@@ -34,6 +34,7 @@ Log shortcuts the same day you take them. Silent debt becomes launch risk.
 | TD-010 | 2026-08-10 | S2 | Content | Service FAQs and body copy are draft until Mohmed reviews | Edit MDX entries after approval | open |
 | TD-011 | 2026-08-10 | S2 | Content | City MDX copy is draft until Mohmed reviews landmark/HOA claims | Edit city entries after approval | open |
 | TD-012 | 2026-08-10 | S1 | Forms | CompactEstimateForm GETs /contact until /api/lead exists | Wire to lead endpoint in Phase 9 | open |
+| TD-013 | 2026-08-10 | S0 | Calculator | calculator.json still `approved: false` | Mohmed approves bands, then flip flag | open |
 
 ## Paydown cadence
 
