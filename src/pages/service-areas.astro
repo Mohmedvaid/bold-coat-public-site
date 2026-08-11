@@ -5,7 +5,7 @@ import { site } from '../config/site';
 
 const title = 'Service Areas | Bold Coat Painters';
 const description =
-  'Bold Coat Painters service areas across Chicago\'s North Shore and nearby suburbs. Primary town pages plus additional communities we serve on request.';
+  'Bold Coat Painters serves eleven premium North Shore and western towns, plus a short list of nearby expansion communities. Request an estimate to confirm fit.';
 ---
 
 <Page title={title} description={description} canonicalPath="/service-areas">
@@ -16,11 +16,11 @@ const description =
         Where we paint
       </h1>
       <p class="mt-5 max-w-2xl text-lg text-ink/80">
-        Our deepest local pages cover eleven premium towns. We also take on projects in nearby
-        communities listed below when the scope fits.
+        We focus on premium residential work in eleven core towns with dedicated local pages. A short
+        expansion list covers nearby high-fit communities we serve when the scope matches.
       </p>
 
-      <h2 class="mt-12 text-[2rem] md:text-4xl">Primary North Shore towns</h2>
+      <h2 class="mt-12 text-[2rem] md:text-4xl">Core towns</h2>
       <ul class="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
         {
           site.cities.map((city) => (
@@ -36,10 +36,10 @@ const description =
         }
       </ul>
 
-      <h2 class="mt-14 text-[2rem] md:text-4xl">Additional communities</h2>
+      <h2 class="mt-14 text-[2rem] md:text-4xl">Expansion communities</h2>
       <p class="mt-4 max-w-2xl text-base text-ink/75">
-        These towns do not have dedicated landing pages. If your home is here and you want North
-        Shore-level prep and finish standards, request an estimate and we will confirm fit.
+        No dedicated landing pages yet. If your home is here and you want the same prep and finish
+        standards as our core towns, request an estimate and we will confirm fit.
       </p>
       <ul class="mt-6 columns-1 gap-x-8 text-base text-ink/85 sm:columns-2 md:columns-3">
         {site.additionalAreas.map((town) => <li class="mb-2 break-inside-avoid">{town}</li>)}

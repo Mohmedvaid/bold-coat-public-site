@@ -11,6 +11,8 @@ Living snapshot of where the Bold Coat rebuild stands. Update this when prioriti
 
 **Current priority:** finish and launch the site people see (photos, PENDING config, copy approval, calculator bands, preview DoD). Not the advanced lead API.
 
+**Geography (locked):** Core 11 city pages only, plus Expansion 8 on `/service-areas`. See [../research/seo-research.md](../research/seo-research.md). Do not rebuild WP-era doorway towns.
+
 ## What shipped
 
 | Phase | What is on `main` |
@@ -86,7 +88,7 @@ Forms today: Contact POSTs `/api/lead` and falls back to phone when the endpoint
 - Tech debt: [03-tech-debt.md](03-tech-debt.md)
 - Definition of done: [04-definition-of-done.md](04-definition-of-done.md)
 - Status handoff: [07-status-handoff.md](07-status-handoff.md)
-- SEO / market research: [../research/2026-08-chicagoland-seo-markets.md](../research/2026-08-chicagoland-seo-markets.md)
+- SEO / market research: [../research/seo-research.md](../research/seo-research.md) (Core 11 + Expansion 8 only)
 - Product specs: [docs/01](../01-brief.md) through [docs/05](../05-calculator-spec.md)
 - Hard rules: [CLAUDE.md](../../CLAUDE.md)
 

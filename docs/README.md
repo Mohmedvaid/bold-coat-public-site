@@ -32,7 +32,7 @@ Hard rules (em dashes, pricing silence, trust claims, a11y, perf) live only in `
 - Feature template: [templates/feature.md](templates/feature.md) → write into `features/`
 - ADR template: [templates/adr.md](templates/adr.md) → write into `adr/`
 - Design specs (brainstorming): [superpowers/specs/](superpowers/specs/)
-- Research: [research/2026-08-chicagoland-seo-markets.md](research/2026-08-chicagoland-seo-markets.md)
+- Research: [research/seo-research.md](research/seo-research.md) (locked Core 11 + Expansion 8)
 
 ## Agent skills
 
