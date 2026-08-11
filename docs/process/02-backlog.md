@@ -2,7 +2,7 @@
 
 Living list. Priorities: P0 must ship for launch, P1 launch-week, P2 post-launch, P3 nice-to-have.
 
-Status: `todo` | `doing` | `blocked` | `done`
+Status: `todo` | `doing` | `blocked` | `deferred` | `done`
 
 ## P0 (launch blockers)
 
@@ -20,7 +20,6 @@ Status: `todo` | `doing` | `blocked` | `done`
 | B-010 | Blog hub + post template | 6 | done | Templates + 5 sample posts |
 | B-011 | About, Contact, service-areas, legal | 7 | done | About, Contact form, service-areas, legal, thank-you |
 | B-012 | vercel.json redirects + sitemap | 8 | done | Diffed against live WP page-sitemap; thank-you excluded |
-| B-013 | `/api/lead` + thank-you + GTM | 9 | todo | Ask Mohmed for Zapier + Turnstile secrets |
 
 ## P1 (launch week)
 
@@ -36,6 +35,7 @@ Status: `todo` | `doing` | `blocked` | `done`
 
 | ID | Item | Status | Notes |
 |---|---|---|---|
+| B-013 | `/api/lead` + thank-you + GTM | deferred | Phase 9: advanced; after launch finish. Needs Zapier + Turnstile secrets |
 | B-030 | Weekly blog posts (launch queue in docs/04) | todo | One per week |
 | B-031 | Real project case studies with gallery | todo | |
 | B-032 | Town-specific FAQs for all 11 cities | todo | |
