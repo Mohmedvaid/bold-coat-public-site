@@ -1,6 +1,6 @@
 # CLAUDE.md - Bold Coat Painters Website
 
-Read this first. Then read /docs in order (01 to 05) before writing any code.
+Read this first. Then read /docs in order (01 to 05) before writing any code. Then read `docs/README.md` for process docs (phases, backlog, tech debt, DoD, branching) and agent skills.
 
 ## What this project is
 
@@ -52,3 +52,11 @@ Renders correct schema, passes the meta checklist in docs/04, no horizontal scro
 
 Decide yourself: component structure, animation implementation details, spacing, responsive behavior, code organization.
 Ask Mohmed: any price number, warranty years, review counts, stat figures, final copy claims about the business, photo selections, and anything touching the Zapier webhook URL or environment variables.
+
+## Process docs and skills
+
+Process kit: `docs/process/` (principles, phases, backlog, tech debt, DoD, git branching, ADR index). Templates: `docs/templates/`. Living feature/ADR folders: `docs/features/`, `docs/adr/`.
+
+Project skills (`.cursor/skills/`): `bold-coat-build`, `bold-coat-astro`, `bold-coat-seo-content`, `bold-coat-forms-leads`, `bold-coat-design-system`.
+
+Personal skills (`~/.cursor/skills/`): `clean-code`, `git-branching-workflow`, `frontend-performance`, `feature-docs-writing`, `tech-debt-management`.
