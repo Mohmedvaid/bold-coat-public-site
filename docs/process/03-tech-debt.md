@@ -33,7 +33,7 @@ Log shortcuts the same day you take them. Silent debt becomes launch risk.
 | TD-009 | 2026-08-10 | S2 | Copy | Promise and process wording is draft until Mohmed approves | Replace with approved copy | open |
 | TD-010 | 2026-08-10 | S2 | Content | Service FAQs and body copy are draft until Mohmed reviews | Edit MDX entries after approval | open |
 | TD-011 | 2026-08-10 | S2 | Content | City MDX copy is draft until Mohmed reviews landmark/HOA claims | Edit city entries after approval | open |
-| TD-012 | 2026-08-10 | S1 | Forms | CompactEstimateForm GETs /contact; EstimateForm POSTs /api/lead but endpoint not live yet | Wire Turnstile + Zapier API in Phase 9; optionally POST compact form | open |
+| TD-012 | 2026-08-10 | S1 | Forms | CompactEstimateForm GETs /contact; EstimateForm POSTs /api/lead but endpoint not live yet | Phase 9 deferred until after launch finish; phone fallback until then | open |
 | TD-013 | 2026-08-10 | S0 | Calculator | calculator.json still `approved: false` | Mohmed approves bands, then flip flag | open |
 | TD-014 | 2026-08-10 | S1 | Content | Project galleries use cream placeholders | Swap when photo archive arrives | open |
 | TD-015 | 2026-08-10 | S2 | Content | Blog launch queue not authored yet (docs/04) | Write weekly posts after launch | open |
