@@ -4,6 +4,13 @@
 
 `main` is production. Never force-push `main`.
 
+## Hard rule: never work on `main`
+
+- **Do not edit, commit, or experiment on `main`.**
+- At the start of every task: `git checkout main && git pull`, then immediately `git checkout -b <type>/<short-area>`.
+- All code, docs, and config changes happen on that branch only.
+- Merge to `main` only via PR. After merge, pull `main`, then start a **new** branch for the next task. Do not stay on `main` to “just fix one thing.”
+
 ## Branch names
 
 ```
@@ -11,9 +18,10 @@ feat/<short-area>          # new capability
 fix/<short-area>           # bug fix
 chore/<short-area>         # tooling, deps, docs-only process
 content/<short-area>       # MDX/copy/images without app logic
+docs/<short-area>          # documentation only
 ```
 
-Examples: `feat/phase-0-foundations`, `feat/winnetka-city-page`, `fix/navbar-focus`, `content/blog-exterior-cost`.
+Examples: `feat/phase-0-foundations`, `feat/winnetka-city-page`, `fix/navbar-focus`, `content/blog-exterior-cost`, `docs/git-never-work-on-main`.
 
 One concern per branch. Prefer short-lived branches merged via PR.
 
