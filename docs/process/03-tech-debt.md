@@ -26,7 +26,7 @@ Log shortcuts the same day you take them. Silent debt becomes launch risk.
 | TD-002 | 2026-08-10 | S0 | Config | warrantyYears / aggregateReviews PENDING | Confirm with Mohmed; then render | open |
 | TD-003 | 2026-08-10 | S0 | Calculator | calculator.json `approved: false` | Mohmed approves bands | open |
 | TD-004 | 2026-08-10 | S2 | Repo | App not scaffolded; docs-only | Phase 0 scaffold | closed |
-| TD-005 | 2026-08-10 | S2 | Brand | Typed Logo wordmark until real SVG assets | Swap when Mohmed supplies logo files | open |
+| TD-005 | 2026-08-10 | S2 | Brand | Typed Logo wordmark until SVG swap; masters now in `public/brand/` | Outline Fraunces in Figma, wire Logo.astro, export OG/GBP rasters per docs/brand/logo-assets.md | open |
 | TD-006 | 2026-08-10 | S1 | NAP | Street address / postal empty pending GBP confirm | Fill site.ts address fields | open |
 | TD-007 | 2026-08-10 | S3 | Assets | Default scaffold favicon.ico still present; SVG favicon active | Remove ico or replace with brand set | open |
 | TD-008 | 2026-08-10 | S1 | Content | Homepage uses cream placeholders (hero, slider, cards) | Swap when photo archive arrives | open |

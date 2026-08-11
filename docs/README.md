@@ -33,6 +33,7 @@ Hard rules (em dashes, pricing silence, trust claims, a11y, perf) live only in `
 - ADR template: [templates/adr.md](templates/adr.md) → write into `adr/`
 - Design specs (brainstorming): [superpowers/specs/](superpowers/specs/)
 - Research: [research/seo-research.md](research/seo-research.md) (locked Core 11 + Expansion 8)
+- Brand logos: [brand/logo-assets.md](brand/logo-assets.md) (SVG masters + export pack)
 
 ## Agent skills
 

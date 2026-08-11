@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 56" fill="none" role="img" aria-labelledby="bc-logo-title">
+  <title id="bc-logo-title">Bold Coat Painters</title>
+  <!--
+    Master wordmark. Uses currentColor so the parent can set cream (on navy) or ink (on paper).
+    For print / WebP / PNG exports: open in Figma or Illustrator, convert text to outlines,
+    then export the sizes listed in docs/brand/logo-assets.md.
+    Font intent: Fraunces SemiBold; Georgia is the offline fallback.
+  -->
+  <text
+    x="0"
+    y="40"
+    fill="currentColor"
+    font-family="Fraunces, Georgia, 'Times New Roman', serif"
+    font-size="36"
+    font-weight="600"
+    letter-spacing="-0.03em"
+  >BOLD COAT</text>
+  <!-- Dot in first O (BOLD) -->
+  <circle cx="67.5" cy="28.5" r="3.2" fill="#D9402E"/>
+  <!-- Dot in second O (COAT) -->
+  <circle cx="242.5" cy="28.5" r="3.2" fill="#F2C94C"/>
+</svg>
