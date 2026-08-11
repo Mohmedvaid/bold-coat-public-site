@@ -1,0 +1,57 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../config/site';
+
+const title = 'Privacy Policy | Bold Coat Painters';
+const description =
+  'Privacy policy for BoldCoatPainters.com covering contact forms, analytics, and how Bold Coat Painters handles personal information from estimate requests.';
+---
+
+<Page title={title} description={description} canonicalPath="/privacy-policy">
+  <section class="bg-paper">
+    <div class="mx-auto max-w-3xl px-4 py-14 text-base leading-relaxed text-ink/85 md:px-6 md:py-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Legal</p>
+      <h1 class="mt-3 text-[1.75rem] sm:text-4xl">Privacy Policy</h1>
+      <p class="mt-4 text-sm text-stone">Last updated: August 10, 2026</p>
+
+      <p class="mt-8">
+        This policy describes how {site.name} ("we", "us") handles information collected through
+        boldcoatpainters.com. It is a working draft for launch and should be reviewed by counsel.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Information we collect</h2>
+      <p class="mt-4">
+        When you request an estimate or use the cost calculator capture form, we collect the details
+        you submit, such as name, phone, email, town, service interest, and optional project notes.
+        We also receive standard technical data from your browser and analytics tools configured in
+        Google Tag Manager.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">How we use information</h2>
+      <p class="mt-4">
+        We use estimate requests to respond to your inquiry, schedule walkthroughs, and improve our
+        services. Analytics events help us understand site performance and advertising results. We
+        do not sell personal information.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Sharing</h2>
+      <p class="mt-4">
+        Lead details may be forwarded to our operations tools through a secure webhook so our team
+        can follow up. Service providers that process form or analytics data do so only to support
+        those purposes.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Cookies and analytics</h2>
+      <p class="mt-4">
+        We use Google Tag Manager with analytics and advertising tags as configured for the business.
+        You can control cookies through your browser settings.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Contact</h2>
+      <p class="mt-4">
+        Privacy questions: <a class="text-red" href={`mailto:${site.email}`}>{site.email}</a> or{' '}
+        <a class="text-red" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>.
+      </p>
+    </div>
+  </section>
+</Page>

@@ -1,0 +1,61 @@
+---
+import Page from '../layouts/Page.astro';
+import PromiseBlock from '../components/PromiseBlock.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CTABand from '../components/CTABand.astro';
+import MediaPlaceholder from '../components/MediaPlaceholder.astro';
+import { site } from '../config/site';
+
+const title = 'About Bold Coat Painters | North Shore Painting';
+const description =
+  'About Bold Coat Painters: premium residential painting for Chicago\'s North Shore with careful prep, clear scopes, and supervised, fully insured teams.';
+---
+
+<Page title={title} description={description} canonicalPath="/about">
+  <section class="bg-paper">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:px-6 md:py-20">
+      <div>
+        <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">About</p>
+        <h1 class="mt-3 text-[1.75rem] sm:text-4xl md:text-5xl">
+          Painting built for North Shore homes
+        </h1>
+        <p class="mt-5 text-lg text-ink/80">
+          Bold Coat Painters is a premium residential painting firm for homeowners who care about
+          prep, schedule clarity, and a finish that still looks right after a Chicago winter.
+        </p>
+      </div>
+      <MediaPlaceholder
+        aspect="aspect-[4/3]"
+        label="Bold Coat painting team on a North Shore job site, photo coming soon"
+      />
+    </div>
+  </section>
+
+  <section class="bg-cream">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-base leading-relaxed text-ink/85 md:px-6 md:py-20">
+      <h2 class="text-[2rem] text-ink md:text-4xl">Who we are</h2>
+      <p class="mt-6">
+        We work on cedar, brick, stucco, Hardie, interiors, cabinets, and outdoor wood across
+        Winnetka, Wilmette, Lake Forest, Glenview, and the surrounding North Shore and nearby
+        western towns. The brand is already in market on yard signs, proposals, and local ads.
+        This site exists to match that standard online.
+      </p>
+      <p class="mt-5">
+        Our teams are vetted, background-checked, supervised, and fully insured. We sell outcomes
+        you can see and schedule against: daily updates, a clean job site every evening, an on-time
+        start, a final walkthrough, and a written warranty. We do not fill pages with franchise
+        filler or thin one-day promises.
+      </p>
+      <p class="mt-5">
+        If you are comparing painters, ask for a written scope that names surfaces and prep. Then
+        call{' '}
+        <a class="text-red" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+        {' '}or request an estimate. We will tell you honestly when a job is outside what we do well.
+      </p>
+    </div>
+  </section>
+
+  <PromiseBlock />
+  <ProcessSteps />
+  <CTABand heading="Want to meet on site?" />
+</Page>

@@ -1,0 +1,55 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../config/site';
+
+const title = 'Terms & Conditions | Bold Coat Painters';
+const description =
+  'Terms and conditions for using BoldCoatPainters.com, covering estimate requests, website content use, and limits of online cost ranges before an on-site visit.';
+---
+
+<Page title={title} description={description} canonicalPath="/terms-conditions">
+  <section class="bg-paper">
+    <div class="mx-auto max-w-3xl px-4 py-14 text-base leading-relaxed text-ink/85 md:px-6 md:py-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Legal</p>
+      <h1 class="mt-3 text-[1.75rem] sm:text-4xl">Terms &amp; Conditions</h1>
+      <p class="mt-4 text-sm text-stone">Last updated: August 10, 2026</p>
+
+      <p class="mt-8">
+        By using boldcoatpainters.com, you agree to these terms. This page is a working draft for
+        launch and should be reviewed by counsel before relying on it as final legal language.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Website use</h2>
+      <p class="mt-4">
+        Content on this site is for general information about {site.name} and our services. It is
+        not a bid, warranty grant, or professional advice for a specific property until confirmed
+        in a written estimate or contract.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Estimates and calculator</h2>
+      <p class="mt-4">
+        Online cost ranges are wide public ballparks only. They are not binding quotes. A free
+        on-site estimate and written scope are required for project pricing. Submitting a form
+        requests contact from our team and does not create a contract by itself.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Intellectual property</h2>
+      <p class="mt-4">
+        Site text, branding, and design elements belong to {site.name} or its licensors. Do not
+        copy or reuse them without permission.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Limitation of liability</h2>
+      <p class="mt-4">
+        To the fullest extent allowed by law, we are not liable for damages arising from use of
+        this website or reliance on online ranges that have not been confirmed on site.
+      </p>
+
+      <h2 class="mt-10 font-display text-2xl text-ink">Contact</h2>
+      <p class="mt-4">
+        Questions: <a class="text-red" href={`mailto:${site.email}`}>{site.email}</a> or{' '}
+        <a class="text-red" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>.
+      </p>
+    </div>
+  </section>
+</Page>

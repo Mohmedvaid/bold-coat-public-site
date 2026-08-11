@@ -1,0 +1,51 @@
+---
+import Page from '../layouts/Page.astro';
+import CTABand from '../components/CTABand.astro';
+import { site } from '../config/site';
+
+const title = 'Service Areas | Bold Coat Painters';
+const description =
+  'Bold Coat Painters service areas across Chicago\'s North Shore and nearby suburbs. Primary town pages plus additional communities we serve on request.';
+---
+
+<Page title={title} description={description} canonicalPath="/service-areas">
+  <section class="bg-paper">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Service areas</p>
+      <h1 class="mt-3 max-w-3xl text-[1.75rem] sm:text-4xl md:text-5xl">
+        Where we paint
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-ink/80">
+        Our deepest local pages cover eleven premium towns. We also take on projects in nearby
+        communities listed below when the scope fits.
+      </p>
+
+      <h2 class="mt-12 text-[2rem] md:text-4xl">Primary North Shore towns</h2>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+        {
+          site.cities.map((city) => (
+            <li>
+              <a
+                href={`/${city.slug}`}
+                class="block border border-cream bg-cream/40 px-4 py-3 text-base font-medium text-navy hover:border-navy"
+              >
+                {city.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2 class="mt-14 text-[2rem] md:text-4xl">Additional communities</h2>
+      <p class="mt-4 max-w-2xl text-base text-ink/75">
+        These towns do not have dedicated landing pages. If your home is here and you want North
+        Shore-level prep and finish standards, request an estimate and we will confirm fit.
+      </p>
+      <ul class="mt-6 columns-1 gap-x-8 text-base text-ink/85 sm:columns-2 md:columns-3">
+        {site.additionalAreas.map((town) => <li class="mb-2 break-inside-avoid">{town}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CTABand heading="Not sure if we cover your block?" />
+</Page>
