@@ -24,6 +24,6 @@ Phases map 1:1 to the build order in `CLAUDE.md`. Do not start the next phase un
 
 ## Current phase
 
-**Phase 5: Projects** complete on branch `feat/phase-5-projects`. Next: **Phase 6 Blog**.
+**Phase 6: Blog** complete on branch `feat/phase-6-blog`. Next: **Phase 7 Company + legal**.
 
 Update this line when a phase completes.

@@ -70,4 +70,18 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { services, cities, projects };
+const blog = defineCollection({
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    metaTitle: z.string().max(60),
+    description: z.string().min(140).max(160),
+    date: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    category: z.enum(['cost', 'exteriors', 'interiors', 'colors', 'projects']),
+    coverAlt: z.string(),
+    faqs: z.array(faqSchema).optional(),
+  }),
+});
+
+export const collections = { services, cities, projects, blog };

@@ -1,0 +1,27 @@
+---
+interface Props {
+  href?: string;
+  label?: string;
+}
+
+const {
+  href = '/contact',
+  label = 'Ready for a finish that lasts? Get a free on-site estimate.',
+} = Astro.props;
+---
+
+<aside class="my-10 border border-cream bg-cream px-6 py-8">
+  <p class="font-display text-2xl text-ink">{label}</p>
+  <div class="mt-5 flex flex-wrap gap-4">
+    <a
+      href={href}
+      class="inline-flex bg-red px-5 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
+    >
+      Free Estimate
+    </a>
+    <a href="/pricing" class="inline-flex items-center gap-1 text-base font-medium text-red">
+      Cost calculator
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</aside>
