@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@import "@fontsource-variable/fraunces/wght.css";
+@import "@fontsource-variable/inter/wght.css";
+
+@theme {
+  --color-navy: #1f2a44;
+  --color-midnight: #151f33;
+  --color-paper: #fbfaf7;
+  --color-cream: #f1ebe0;
+  --color-ink: #1a1a1a;
+  --color-red: #d9402e;
+  --color-gold: #f2c94c;
+  --color-stone: #8a857d;
+
+  --font-display: "Fraunces Variable", "Fraunces Fallback", Georgia, serif;
+  --font-sans: "Inter Variable", "Inter Fallback", system-ui, sans-serif;
+
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.6;
+  --text-nav: 0.9375rem;
+  --text-label: 0.8125rem;
+}
+
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Georgia");
+  size-adjust: 105%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink text-body antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-red;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-semibold tracking-tight text-ink;
+    line-height: 1.1;
+  }
+}

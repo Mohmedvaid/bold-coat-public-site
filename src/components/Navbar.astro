@@ -1,0 +1,103 @@
+---
+import Logo from './Logo.astro';
+import MobileNav from './islands/MobileNav';
+import { site, telHref } from '../config/site';
+
+const navLinks = [
+  { label: 'Projects', href: '/projects' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-40 bg-navy text-cream transition-[padding] duration-200"
+  data-compressed="false"
+>
+  <div
+    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 transition-[padding] duration-200 md:px-6 header-inner"
+  >
+    <Logo variant="on-navy" />
+
+    <nav class="hidden items-center gap-6 lg:flex" aria-label="Primary">
+      <div class="relative group">
+        <button
+          type="button"
+          class="inline-flex items-center gap-1 text-nav font-medium text-cream/95 hover:text-cream"
+          aria-expanded="false"
+          aria-haspopup="true"
+          data-services-trigger
+        >
+          Services
+          <svg class="size-3.5 opacity-80" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          </svg>
+        </button>
+        <div
+          class="invisible absolute left-0 top-full z-50 min-w-56 translate-y-1 bg-midnight py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+          role="menu"
+        >
+          {
+            site.services.map((service) => (
+              <a
+                href={service.href}
+                class="block px-4 py-2 text-sm text-cream/90 hover:bg-navy hover:text-cream"
+                role="menuitem"
+              >
+                {service.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="text-nav font-medium text-cream/95 hover:text-cream">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href={telHref()}
+        class="hidden text-nav font-medium text-cream/95 hover:text-cream sm:inline"
+        data-phone-click
+      >
+        {site.phoneDisplay}
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center bg-red px-3 py-2 text-sm font-medium text-paper transition-colors hover:bg-[#c73828] sm:px-4"
+      >
+        Free Estimate
+      </a>
+      <MobileNav
+        client:load
+        services={[...site.services]}
+        links={navLinks}
+        phoneDisplay={site.phoneDisplay}
+        phoneHref={telHref()}
+      />
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    if (!header) return;
+    const compressed = window.scrollY > 24;
+    header.dataset.compressed = String(compressed);
+    header.classList.toggle('py-0', compressed);
+    const inner = header.querySelector('.header-inner');
+    inner?.classList.toggle('py-2.5', compressed);
+    inner?.classList.toggle('py-4', !compressed);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

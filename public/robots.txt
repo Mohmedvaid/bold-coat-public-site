@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boldcoatpainters.com/sitemap-index.xml
