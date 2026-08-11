@@ -1,0 +1,220 @@
+---
+import Page from '../layouts/Page.astro';
+import EstimateCalculator from '../components/islands/EstimateCalculator';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import calculatorConfig from '../config/calculator.json';
+import type { CalculatorConfig } from '../config/calculator';
+import { site } from '../config/site';
+
+const title = 'Painting Cost Calculator: Chicago North Shore | Bold Coat';
+const description =
+  'Estimate painting costs for Chicago North Shore homes. Wide public ranges for interior, exterior, and cabinets, plus a free on-site estimate.';
+
+const faqs = [
+  {
+    question: 'How much does it cost to paint a house exterior in Chicago?',
+    answer:
+      'Exterior ranges vary with size, stories, surface, and prep. Use the calculator for a wide public ballpark, then schedule an on-site visit for a number that matches your home.',
+  },
+  {
+    question: 'How much does interior painting cost in the Chicago suburbs?',
+    answer:
+      'Interior cost tracks room count, ceiling height, repairs, and trim. A single room can sit at the low end of public ranges, while a whole home climbs quickly when prep is heavy.',
+  },
+  {
+    question: 'Why are online painting cost ranges so wide?',
+    answer:
+      'Homes differ in access, substrate, failed coatings, and finish grade. A tight online quote that ignores those factors usually undercuts the real job and leads to change orders.',
+  },
+  {
+    question: 'What does a free estimate from Bold Coat include?',
+    answer:
+      'An on-site walkthrough, a written scope naming surfaces and prep, and a clear path to schedule. The calculator is only a starting point for high-intent cost research.',
+  },
+  {
+    question: 'Is the calculator a binding quote?',
+    answer:
+      'No. It uses wide public-market bands for education and lead capture. Your exact price comes from seeing the home in person.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+const config = calculatorConfig as CalculatorConfig;
+---
+
+<Page title={title} description={description} canonicalPath="/pricing">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="bg-paper">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Pricing</p>
+      <h1 class="mt-3 max-w-3xl text-[1.75rem] sm:text-4xl md:text-5xl">
+        Painting cost calculator for Chicago's North Shore
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-ink/80">
+        Get a wide public ballpark for interior, exterior, or cabinet work, then book a free
+        on-site estimate for the number that matches your home. Call{' '}
+        <a class="text-red" href={`tel:${site.phone}`}>{site.phoneDisplay}</a> anytime.
+      </p>
+      <div class="mt-10">
+        <EstimateCalculator client:load config={config} />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream" aria-labelledby="cost-guide-heading">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-base leading-relaxed text-ink/85 md:px-6 md:py-20">
+      <h2 id="cost-guide-heading" class="text-[2rem] text-ink md:text-4xl">
+        What drives painting costs on the North Shore
+      </h2>
+      <p class="mt-6">
+        Homeowners searching for painting costs in Chicago and the North Shore usually want two
+        things at once: a realistic range they can plan around, and a painter who will not bait
+        them with an unrealistically low number. Those goals conflict when a website invents a
+        precise price without seeing the house. Size, prep, surface, product grade, and access
+        all move the number. The calculator on this page stays intentionally wide for that reason.
+        It is a marketing and education tool built from public-market bands, not an internal
+        pricing engine and not a substitute for walking the property.
+      </p>
+      <p class="mt-5">
+        Project size is the first driver people notice. A single interior room is a different job
+        from a whole-home repaint. A one-story ranch with clear yard access is a different exterior
+        from a three-story home with steep pitches, dormers, and limited ladder positions. Cabinet
+        painting scales with door and drawer counts, not just kitchen square footage. When you
+        compare quotes, make sure each painter is counting the same walls, elevations, and fronts.
+      </p>
+      <p class="mt-5">
+        Prep is where honest jobs and thin jobs diverge. Good-shape surfaces still need cleaning,
+        caulking, and light sanding. Some-prep homes need scraping, priming bare wood, and spot
+        repairs. Heavy-prep exteriors may need failed coatings removed across large elevations
+        before finish coats can hold through freeze and thaw. Interior plaster repairs, water
+        stains, and glossy trim that needs deglossing also add time. If a quote barely mentions
+        prep, ask what happens when the crew finds soft wood or alligatoring under the old film.
+      </p>
+      <p class="mt-5">
+        Surfaces on North Shore homes are rarely uniform. Cedar shake, clapboard, brick, stucco,
+        Hardie, vinyl trim, and metal accents can appear on the same block. Each substrate takes
+        prep and coatings differently. Shade and moisture in wooded lots change how finishes cure.
+        Lake weather accelerates failures when coatings are applied over damp or contaminated
+        wood. Interior plaster, older trim profiles, and updated drywall in renovated kitchens
+        create their own edge and sheen challenges. A painter who knows these patterns will write
+        them into the scope instead of inventing a one-price-fits-all exterior package.
+      </p>
+      <p class="mt-5">
+        Paint grade and sheen matter for both look and longevity. Higher-grade coatings often
+        cover better and hold color longer, but they do not rescue skipped prep. Trim sheens,
+        cabinet systems, and exterior elastomeric or stain choices should match use and exposure.
+        Access also changes labor: occupied homes, tight side yards, multi-story work, furniture
+        moves, and evening commercial schedules all affect how long a careful crew spends on site.
+        The free estimate exists to translate those details into a written number you can compare.
+      </p>
+
+      <h2 class="mt-12 text-[2rem] text-ink md:text-4xl">Why ranges vary so much online</h2>
+      <p class="mt-6">
+        Search results for painting cost calculators and cost-per-square-foot articles often
+        disagree by thousands of dollars. Some tools ignore stories and prep. Some assume flat
+        vinyl siding on an open lot. Some bury change orders for carpentry, priming, or third
+        coats. Wide public ranges are more honest for a first pass because they leave room for
+        real houses. Our bands are conservative on purpose so the tool never undercuts a real
+        estimate. If your calculator result feels high, that usually means the home needs more
+        prep or the size band is larger than a quick mental estimate.
+      </p>
+      <p class="mt-5">
+        Local market conditions also matter. Chicago winters compress outdoor calendars. Spring
+        and fall bring humidity swings. North Shore lots can limit staging. Western suburbs like
+        Hinsdale and Oak Brook often mix historic detailing with HOA expectations. None of those
+        factors fit neatly into a national average. Use online tools to learn the drivers, then
+        insist on an on-site scope that names surfaces, prep steps, products, and schedule.
+      </p>
+
+      <h2 class="mt-12 text-[2rem] text-ink md:text-4xl">What a free on-site estimate covers</h2>
+      <p class="mt-6">
+        A useful estimate starts with a walkthrough. We look at elevations, interiors, or cabinets
+        with you, note repairs, and separate coating work from carpentry when needed. You leave
+        with a written scope: what is included, what is excluded, and how the job will run day to
+        day. That document is how you compare painters without getting burned by vague verbal
+        promises. The calculator on this page can help you decide whether to start with interior,
+        exterior, or cabinets. The estimate turns that interest into a plan for your specific home.
+      </p>
+      <p class="mt-5">
+        We also talk through protection and cleanup. Plantings, floors, furniture, and hardscape
+        need daily care. Occupied homes need sequencing. Commercial spaces may need nights or
+        weekends. Those logistics belong in the conversation before paint day. When you are ready,
+        request an estimate from the calculator result, the contact page, or by calling{' '}
+        {site.phoneDisplay}. If you are still researching costs, keep reading the FAQs below and
+        check our{' '}
+        <a class="text-red" href="/services/exterior-painting">exterior</a>,{' '}
+        <a class="text-red" href="/services/interior-painting">interior</a>, and{' '}
+        <a class="text-red" href="/services/cabinet-painting">cabinet</a> service pages for scope
+        detail.
+      </p>
+      <p class="mt-5">
+        Blog cost guides will expand this page over time with longer seasonal and surface-specific
+        articles. Until those posts publish, this calculator page is the hub for cost keywords
+        across the metro while our service area stays focused on premium North Shore and nearby
+        western towns. That split is intentional: searchers researching Chicago painting costs
+        still need clear education, and homeowners in Winnetka, Wilmette, Lake Forest, Glenview,
+        and surrounding communities need local execution. Use the tool for orientation. Use the
+        estimate for decisions.
+      </p>
+      <p class="mt-5">
+        Interior cost questions often start with room count and end with trim. A hallway with
+        dense door casings can take longer than a larger bedroom with simple baseboard. Ceilings,
+        accent walls, and color changes from dark to light may need extra coats. If you are
+        refreshing a whole floor while living in the house, sequencing matters as much as gallons.
+        Ask any painter how they protect floors, how they handle odors, and whether furniture
+        moving is included. Those answers belong next to the dollar range, not after the crew
+        arrives.
+      </p>
+      <p class="mt-5">
+        Exterior cost questions should include stories, roof lines, and surface mix. A Hardie
+        elevation with clear access is not the same job as cedar shake with failed coatings and
+        landscaping tight to the foundation. Brick and stucco need different prep notes than wood.
+        South and west elevations weather differently from shaded north sides. If a quote is a
+        single line item labeled exterior without naming those conditions, it is not ready to
+        compare. Our calculator asks for size and condition first so the range reflects prep
+        reality even before we visit.
+      </p>
+      <p class="mt-5">
+        Cabinet painting sits in its own cost lane. Door and drawer counts, current finish, grease
+        load, and whether boxes are painted in place all change the schedule. A sprayed finish
+        with careful prep can renew a kitchen without a full remodel, but it is still a craft job.
+        Online numbers that ignore hardware removal, edge sanding, and cure time will not survive
+        contact with a real cabinet run. Use the cabinet path in the calculator for orientation,
+        then let an on-site visit confirm whether painting or replacement is the better spend.
+      </p>
+      <p class="mt-5">
+        Finally, treat every online range as a conversation starter. The homeowners who get burned
+        usually accept the lowest verbal number without a written scope. The homeowners who feel
+        calm about the investment usually compare prep notes, schedule clarity, insurance proof,
+        and how the crew communicates each day. Bold Coat is built for that second group. Get your
+        ballpark here when the calculator is approved, read the drivers on this page, and request
+        the free estimate when you want a number tied to your actual house.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-paper" aria-labelledby="pricing-faq-heading">
+    <div class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-20">
+      <h2 id="pricing-faq-heading" class="text-[2rem] md:text-4xl">Painting cost FAQs</h2>
+      <div class="mt-8">
+        <FAQ items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <CTABand heading="Ready for a number tied to your home?" />
+</Page>
