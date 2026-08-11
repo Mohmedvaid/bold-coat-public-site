@@ -28,4 +28,6 @@ Phases map 1:1 to the build order in `CLAUDE.md`. Do not start the next phase un
 
 **Phases 0 to 8 complete.** Phase 9 Lead path is **on hold** (deferred until after launch finish). Current focus: launch polish (photos, PENDING claims, copy approval, calculator bands, preview DoD).
 
+Full briefing: [07-status-handoff.md](07-status-handoff.md).
+
 Update this section when priorities change.
