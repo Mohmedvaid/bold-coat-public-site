@@ -24,6 +24,6 @@ Phases map 1:1 to the build order in `CLAUDE.md`. Do not start the next phase un
 
 ## Current phase
 
-**Phase 7: Company + legal** complete on branch `feat/phase-7-company-legal`. Next: **Phase 8 Redirects + SEO audit**.
+**Phase 8: Redirects + SEO audit** complete on branch `feat/phase-8-redirects-seo`. Next: **Phase 9 Lead path**.
 
 Update this line when a phase completes.

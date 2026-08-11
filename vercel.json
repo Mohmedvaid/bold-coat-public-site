@@ -1,10 +1,158 @@
 {
+  "redirects": [
+    {
+      "source": "/locations",
+      "destination": "/service-areas",
+      "permanent": true
+    },
+    {
+      "source": "/locations/",
+      "destination": "/service-areas",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/request-a-free-estimate",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/request-a-free-estimate/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/services/residential-painting",
+      "destination": "/services/interior-painting",
+      "permanent": true
+    },
+    {
+      "source": "/services/residential-painting/",
+      "destination": "/services/interior-painting",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/join-our-team-careers-at-bold-coat-painters",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/join-our-team-careers-at-bold-coat-painters/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/skokie/deck-fence-painting",
+      "destination": "/services/fence-deck-staining",
+      "permanent": true
+    },
+    {
+      "source": "/skokie/deck-fence-painting/",
+      "destination": "/services/fence-deck-staining",
+      "permanent": true
+    },
+    {
+      "source": "/western-springs/western-springs-cabinet-painting",
+      "destination": "/services/cabinet-painting",
+      "permanent": true
+    },
+    {
+      "source": "/western-springs/western-springs-cabinet-painting/",
+      "destination": "/services/cabinet-painting",
+      "permanent": true
+    },
+    {
+      "source": "/western-springs/western-springs-commercial-painting",
+      "destination": "/services/commercial-painting",
+      "permanent": true
+    },
+    {
+      "source": "/western-springs/western-springs-commercial-painting/",
+      "destination": "/services/commercial-painting",
+      "permanent": true
+    },
+    {
+      "source": "/:city(winnetka|wilmette|kenilworth|glencoe|northfield|lake-forest|highland-park|northbrook|glenview|hinsdale|oak-brook)/:service(cabinet-painting|commercial-painting|exterior-painting|fence-deck-staining|interior-painting)",
+      "destination": "/services/:service",
+      "permanent": true
+    },
+    {
+      "source": "/:city(winnetka|wilmette|kenilworth|glencoe|northfield|lake-forest|highland-park|northbrook|glenview|hinsdale|oak-brook)/:service(cabinet-painting|commercial-painting|exterior-painting|fence-deck-staining|interior-painting)/",
+      "destination": "/services/:service",
+      "permanent": true
+    },
+    {
+      "source": "/:city(winnetka|wilmette|kenilworth|glencoe|northfield|lake-forest|highland-park|northbrook|glenview|hinsdale|oak-brook)/:path+",
+      "destination": "/:city",
+      "permanent": true
+    },
+    {
+      "source": "/:city(chicago|skokie|evanston|naperville|schaumburg|arlington-heights|aurora|barrington|bolingbrook|deerfield|downers-grove|elmhurst|la-grange|niles|oak-park|oakbrook-terrace|plainfield|river-forest|wheaton|western-springs|lincolnwood|lombard|morton-grove|mount-prospect|norridge|palatine|park-ridge|rosemont)/:service(cabinet-painting|commercial-painting|exterior-painting|fence-deck-staining|interior-painting)",
+      "destination": "/services/:service",
+      "permanent": true
+    },
+    {
+      "source": "/:city(chicago|skokie|evanston|naperville|schaumburg|arlington-heights|aurora|barrington|bolingbrook|deerfield|downers-grove|elmhurst|la-grange|niles|oak-park|oakbrook-terrace|plainfield|river-forest|wheaton|western-springs|lincolnwood|lombard|morton-grove|mount-prospect|norridge|palatine|park-ridge|rosemont)/:service(cabinet-painting|commercial-painting|exterior-painting|fence-deck-staining|interior-painting)/",
+      "destination": "/services/:service",
+      "permanent": true
+    },
+    {
+      "source": "/:city(chicago|skokie|evanston|naperville|schaumburg|arlington-heights|aurora|barrington|bolingbrook|deerfield|downers-grove|elmhurst|la-grange|niles|oak-park|oakbrook-terrace|plainfield|river-forest|wheaton|western-springs|lincolnwood|lombard|morton-grove|mount-prospect|norridge|palatine|park-ridge|rosemont)",
+      "destination": "/service-areas",
+      "permanent": true
+    },
+    {
+      "source": "/:city(chicago|skokie|evanston|naperville|schaumburg|arlington-heights|aurora|barrington|bolingbrook|deerfield|downers-grove|elmhurst|la-grange|niles|oak-park|oakbrook-terrace|plainfield|river-forest|wheaton|western-springs|lincolnwood|lombard|morton-grove|mount-prospect|norridge|palatine|park-ridge|rosemont)/",
+      "destination": "/service-areas",
+      "permanent": true
+    },
+    {
+      "source": "/:city(chicago|skokie|evanston|naperville|schaumburg|arlington-heights|aurora|barrington|bolingbrook|deerfield|downers-grove|elmhurst|la-grange|niles|oak-park|oakbrook-terrace|plainfield|river-forest|wheaton|western-springs|lincolnwood|lombard|morton-grove|mount-prospect|norridge|palatine|park-ridge|rosemont)/:path+",
+      "destination": "/service-areas",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]

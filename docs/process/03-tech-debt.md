@@ -39,6 +39,7 @@ Log shortcuts the same day you take them. Silent debt becomes launch risk.
 | TD-015 | 2026-08-10 | S2 | Content | Blog launch queue not authored yet (docs/04) | Write weekly posts after launch | open |
 | TD-016 | 2026-08-10 | S1 | Legal | Privacy/terms are launch drafts | Counsel review with Mohmed | open |
 | TD-017 | 2026-08-10 | S2 | Copy | About page wording is draft until Mohmed approves | Replace with approved copy | open |
+| TD-018 | 2026-08-10 | S2 | Redirects | No blanket unknown-path → `/` catch-all (would override Vercel static routes) | Triage 404s post-cutover via B-024 | open |
 
 ## Paydown cadence
 

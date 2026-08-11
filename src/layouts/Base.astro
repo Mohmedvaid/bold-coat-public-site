@@ -23,7 +23,7 @@ const ogImageURL = new URL(ogImage, site.url).href;
 
 const localBusiness = {
   '@context': 'https://schema.org',
-  '@type': 'HousePainter',
+  '@type': ['LocalBusiness', 'HousePainter'],
   name: site.name,
   url: site.url,
   telephone: site.phone,

@@ -8,7 +8,13 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://boldcoatpainters.com',
   output: 'static',
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [
+    react(),
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/thank-you'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
