@@ -1,0 +1,212 @@
+---
+import { getCollection, render } from 'astro:content';
+import Page from '../layouts/Page.astro';
+import MediaPlaceholder from '../components/MediaPlaceholder.astro';
+import FAQ from '../components/FAQ.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CompactEstimateForm from '../components/CompactEstimateForm.astro';
+import CTABand from '../components/CTABand.astro';
+import reviewsData from '../config/reviews.json';
+import type { Review } from '../config/reviews';
+import { site } from '../config/site';
+
+export async function getStaticPaths() {
+  const cities = await getCollection('cities', ({ data }) => data.ready);
+  return cities.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const {
+  name,
+  metaTitle,
+  description,
+  intro,
+  heroAlt,
+  nearbyCities,
+  nearbyProjects,
+  faqs,
+} = entry.data;
+
+const nearbyLinks = nearbyCities
+  .map((slug) => site.cities.find((city) => city.slug === slug))
+  .filter((city): city is (typeof site.cities)[number] => Boolean(city));
+
+const townReviews = (reviewsData as Review[])
+  .filter((review) => review.town.toLowerCase() === name.toLowerCase())
+  .slice(0, 3);
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<Page title={metaTitle} description={description} canonicalPath={`/${entry.id}`}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="bg-paper">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:px-6 md:py-20">
+      <div>
+        <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">
+          House painters in {name}
+        </p>
+        <h1 class="mt-3 text-[1.75rem] sm:text-4xl md:text-5xl">
+          House Painters in {name}, IL
+        </h1>
+        <p class="mt-5 max-w-xl text-lg text-ink/80">{intro}</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="#estimate"
+            class="inline-flex bg-red px-5 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
+          >
+            Free Estimate
+          </a>
+          <a href="/pricing" class="inline-flex items-center gap-1 text-base font-medium text-red">
+            Cost calculator
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+      <MediaPlaceholder aspect="aspect-[4/3]" label={heroAlt} />
+    </div>
+  </section>
+
+  <section class="bg-cream" aria-labelledby="city-services-heading">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+      <h2 id="city-services-heading" class="text-[2rem] md:text-4xl">Services in {name}</h2>
+      <ul class="mt-8 flex flex-wrap gap-3">
+        {
+          site.services.map((service) => (
+            <li>
+              <a
+                href={service.href}
+                class="inline-flex border border-navy/15 bg-paper px-4 py-2 text-sm font-medium text-navy hover:border-navy"
+              >
+                {service.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-paper" aria-labelledby="city-projects-heading">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+      <h2 id="city-projects-heading" class="text-[2rem] md:text-4xl">
+        Projects in and near {name}
+      </h2>
+      <div class="mt-10 grid gap-8 md:grid-cols-2">
+        {
+          nearbyProjects.map((project) => (
+            <div>
+              <p class="mb-3 text-sm text-stone">{project.label}</p>
+              <ProjectCard
+                town={project.town}
+                service={project.service}
+                title={project.title}
+                scope={project.scope}
+                href={project.href}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream" aria-labelledby="city-painting-heading">
+    <div class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-20">
+      <h2 id="city-painting-heading" class="text-[2rem] md:text-4xl">
+        Painting homes in {name}
+      </h2>
+      <div class="prose-city mt-8 text-base leading-relaxed text-ink/85">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper" aria-labelledby="city-faq-heading">
+    <div class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-20">
+      <h2 id="city-faq-heading" class="text-[2rem] md:text-4xl">{name} painting FAQs</h2>
+      <div class="mt-8">
+        <FAQ items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  {
+    townReviews.length > 0 && (
+      <section class="bg-cream" aria-labelledby="city-reviews-heading">
+        <div class="mx-auto max-w-6xl px-4 py-16 md:px-6">
+          <h2 id="city-reviews-heading" class="text-[2rem] md:text-4xl">
+            Reviews from {name}
+          </h2>
+          <ul class="mt-8 grid gap-6 md:grid-cols-3">
+            {townReviews.map((review) => (
+              <li class="bg-paper p-6 shadow-sm">
+                <p class="text-base text-ink/85">“{review.quote}”</p>
+                <p class="mt-4 text-sm text-stone">
+                  {review.firstName}, {review.town}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section id="estimate" class="bg-cream" aria-labelledby="city-estimate-heading">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2 md:px-6 md:py-20">
+      <div>
+        <h2 id="city-estimate-heading" class="text-[2rem] md:text-4xl">
+          Request a free estimate in {name}
+        </h2>
+        <p class="mt-4 text-base text-ink/75">
+          Tell us about the home and we will follow up to schedule an on-site visit. For a quick
+          range first, use the{' '}
+          <a href="/pricing" class="text-red">painting cost calculator</a>.
+        </p>
+      </div>
+      <CompactEstimateForm defaultTown={name} />
+    </div>
+  </section>
+
+  <section class="bg-paper" aria-labelledby="nearby-heading">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+      <h2 id="nearby-heading" class="text-[2rem] md:text-4xl">Nearby areas we serve</h2>
+      <ul class="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-base">
+        {
+          nearbyLinks.map((city) => (
+            <li>
+              <a href={`/${city.slug}`} class="text-red hover:underline">
+                {city.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CTABand heading={`Planning a paint project in ${name}?`} />
+</Page>
+
+<style>
+  .prose-city :global(p + p) {
+    margin-top: 1.25rem;
+  }
+</style>
