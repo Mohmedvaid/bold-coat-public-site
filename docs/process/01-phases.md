@@ -24,6 +24,6 @@ Phases map 1:1 to the build order in `CLAUDE.md`. Do not start the next phase un
 
 ## Current phase
 
-**Phase 0: Foundations** (repo is docs-only until scaffold lands).
+**Phase 0: Foundations** complete on branch `feat/phase-0-foundations`. Next: **Phase 1 Homepage**.
 
 Update this line when a phase completes.

@@ -1,0 +1,108 @@
+---
+import Logo from './Logo.astro';
+import { site, isPending, telHref } from '../config/site';
+
+const year = new Date().getFullYear();
+const showWarranty = !isPending(site.warrantyYears);
+---
+
+<footer class="bg-navy text-cream">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 md:px-6 lg:grid-cols-4">
+    <div class="space-y-4 lg:col-span-1">
+      <Logo variant="on-navy" />
+      <p class="max-w-xs text-sm leading-relaxed text-cream/80">
+        Premium residential painting for Chicago's North Shore. Vetted, background-checked,
+        supervised, fully insured teams.
+      </p>
+    </div>
+
+    <div>
+      <p class="mb-3 text-label font-medium uppercase tracking-[0.08em] text-gold">Services</p>
+      <ul class="space-y-2 text-sm">
+        {
+          site.services.map((service) => (
+            <li>
+              <a href={service.href} class="text-cream/85 hover:text-cream">
+                {service.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <p class="mb-3 text-label font-medium uppercase tracking-[0.08em] text-gold">Areas</p>
+      <ul class="space-y-2 text-sm">
+        {
+          site.cities.slice(0, 6).map((city) => (
+            <li>
+              <a href={`/${city.slug}`} class="text-cream/85 hover:text-cream">
+                {city.name}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/service-areas" class="text-cream/85 hover:text-cream">All service areas</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="mb-3 text-label font-medium uppercase tracking-[0.08em] text-gold">Company</p>
+      <ul class="mb-6 space-y-2 text-sm">
+        <li><a href="/about" class="text-cream/85 hover:text-cream">About</a></li>
+        <li><a href="/projects" class="text-cream/85 hover:text-cream">Projects</a></li>
+        <li><a href="/pricing" class="text-cream/85 hover:text-cream">Pricing</a></li>
+        <li><a href="/blog" class="text-cream/85 hover:text-cream">Blog</a></li>
+        <li><a href="/contact" class="text-cream/85 hover:text-cream">Contact</a></li>
+      </ul>
+      <p class="mb-3 text-label font-medium uppercase tracking-[0.08em] text-gold">Contact</p>
+      <ul class="space-y-2 text-sm text-cream/85">
+        <li>
+          <a href={telHref()} class="hover:text-cream" data-phone-click>{site.phoneDisplay}</a>
+        </li>
+        <li>
+          <a href={`mailto:${site.email}`} class="hover:text-cream">{site.email}</a>
+        </li>
+        {
+          site.address.streetAddress ? (
+            <li>
+              {site.address.streetAddress}
+              <br />
+              {site.address.addressLocality}, {site.address.addressRegion}
+              {site.address.postalCode ? ` ${site.address.postalCode}` : ''}
+            </li>
+          ) : (
+            <li>
+              Serving {site.address.addressLocality}'s North Shore, {site.address.addressRegion}
+            </li>
+          )
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-cream/10">
+    <div
+      class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-4 text-sm text-cream/75 md:px-6"
+    >
+      <span>Licensed &amp; Insured</span>
+      {showWarranty && <span>{site.warrantyYears}-year written warranty</span>}
+      <span>Serving the North Shore</span>
+    </div>
+  </div>
+
+  <div class="bg-midnight">
+    <div
+      class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between md:px-6"
+    >
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="/privacy-policy" class="hover:text-cream">Privacy Policy</a>
+        <a href="/terms-conditions" class="hover:text-cream">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>

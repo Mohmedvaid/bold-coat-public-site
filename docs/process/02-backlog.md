@@ -8,9 +8,9 @@ Status: `todo` | `doing` | `blocked` | `done`
 
 | ID | Item | Phase | Status | Notes |
 |---|---|---|---|---|
-| B-001 | Scaffold Astro 5 + Tailwind v4 + fonts | 0 | todo | Match docs/03 layout |
-| B-002 | Design tokens in global.css `@theme` | 0 | todo | Exact hex from docs/02 |
-| B-003 | Base + Page layouts, Navbar, Footer | 0 | todo | |
+| B-001 | Scaffold Astro 5 + Tailwind v4 + fonts | 0 | done | Astro 5.18 + Tailwind v4 + React |
+| B-002 | Design tokens in global.css `@theme` | 0 | done | Exact hex from docs/02 |
+| B-003 | Base + Page layouts, Navbar, Footer | 0 | done | MobileNav island included |
 | B-004 | Homepage sections | 1 | todo | Cream placeholders until photos |
 | B-005 | Service template + 5 pages | 2 | todo | |
 | B-006 | City template + Winnetka | 3 | todo | Proof page first |

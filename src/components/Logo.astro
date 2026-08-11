@@ -1,0 +1,33 @@
+---
+interface Props {
+  variant?: 'on-navy' | 'on-paper';
+  class?: string;
+}
+
+const { variant = 'on-navy', class: className = '' } = Astro.props;
+const onNavy = variant === 'on-navy';
+---
+
+<a href="/" class:list={['inline-flex items-center gap-0.5', className]} aria-label="Bold Coat Painters home">
+  <span
+    class:list={[
+      'font-display text-xl font-semibold tracking-tight sm:text-2xl',
+      onNavy ? 'text-cream' : 'text-ink',
+    ]}
+  >
+    B<span class="relative inline-block"
+      >O<span
+        class="absolute left-1/2 top-[42%] size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red"
+        aria-hidden="true"></span
+      ></span
+    >LD&nbsp;C<span class="relative inline-block"
+      >O<span
+        class="absolute left-1/2 top-[42%] size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold"
+        aria-hidden="true"></span
+      ></span
+    >AT
+  </span>
+</a>
+<svg class="sr-only" aria-hidden="true">
+  <title>Bold Coat Painters</title>
+</svg>
