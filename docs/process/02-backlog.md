@@ -13,8 +13,8 @@ Status: `todo` | `doing` | `blocked` | `done`
 | B-003 | Base + Page layouts, Navbar, Footer | 0 | done | MobileNav island included |
 | B-004 | Homepage sections | 1 | done | Cream placeholders until photos |
 | B-005 | Service template + 5 pages | 2 | done | MDX collection + /services/[slug] |
-| B-006 | City template + Winnetka | 3 | todo | Proof page first |
-| B-007 | Remaining 10 city pages | 3 | todo | Blocked on unique prose |
+| B-006 | City template + Winnetka | 3 | done | Proof page first |
+| B-007 | Remaining 10 city pages | 3 | done | Unique prose per town |
 | B-008 | Pricing + calculator island | 4 | todo | Ship with `approved: false` until Mohmed OK |
 | B-009 | Projects hub + detail | 5 | todo | Placeholder entries OK |
 | B-010 | Blog hub + post template | 6 | todo | |

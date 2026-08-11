@@ -1,0 +1,78 @@
+---
+import { site } from '../config/site';
+
+interface Props {
+  defaultTown?: string;
+}
+
+const { defaultTown = '' } = Astro.props;
+---
+
+<form class="grid gap-4 bg-paper p-6 shadow-sm" action="/contact" method="get" aria-label="Request an estimate">
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="block text-sm font-medium text-ink">
+      Name
+      <input
+        class="mt-1 w-full border border-cream bg-paper px-3 py-2 text-base text-ink"
+        type="text"
+        name="name"
+        required
+        autocomplete="name"
+      />
+    </label>
+    <label class="block text-sm font-medium text-ink">
+      Phone
+      <input
+        class="mt-1 w-full border border-cream bg-paper px-3 py-2 text-base text-ink"
+        type="tel"
+        name="phone"
+        required
+        autocomplete="tel"
+      />
+    </label>
+    <label class="block text-sm font-medium text-ink">
+      Email
+      <input
+        class="mt-1 w-full border border-cream bg-paper px-3 py-2 text-base text-ink"
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+      />
+    </label>
+    <label class="block text-sm font-medium text-ink">
+      Town
+      <input
+        class="mt-1 w-full border border-cream bg-paper px-3 py-2 text-base text-ink"
+        type="text"
+        name="town"
+        required
+        value={defaultTown}
+        autocomplete="address-level2"
+      />
+    </label>
+  </div>
+  <label class="block text-sm font-medium text-ink">
+    Service
+    <select
+      class="mt-1 w-full border border-cream bg-paper px-3 py-2 text-base text-ink"
+      name="service"
+      required
+    >
+      <option value="">Select a service</option>
+      {site.services.map((service) => <option value={service.name}>{service.name}</option>)}
+    </select>
+  </label>
+  <p class="text-sm text-stone">
+    Prefer a call?{' '}
+    <a class="text-red" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+    {' '}·{' '}
+    <a class="text-red" href="/pricing">Open the cost calculator</a>
+  </p>
+  <button
+    type="submit"
+    class="inline-flex w-fit bg-red px-5 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
+  >
+    Free Estimate
+  </button>
+</form>
