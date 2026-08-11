@@ -1,0 +1,38 @@
+---
+import { site, isPending } from '../config/site';
+
+const stats = [
+  { value: site.stats.homes, label: 'Homes painted' },
+  { value: site.stats.years, label: 'Years in market' },
+  { value: site.stats.clients, label: 'Repeat clients' },
+].filter((stat) => !isPending(stat.value));
+---
+
+{
+  stats.length > 0 && (
+    <section class="relative overflow-hidden bg-cream" aria-label="Company stats">
+      <div
+        class="pointer-events-none absolute inset-0 opacity-[0.06]"
+        aria-hidden="true"
+        style="background-image: radial-gradient(circle at 12% 30%, var(--color-gold) 0 2px, transparent 3px), radial-gradient(circle at 38% 70%, var(--color-gold) 0 1.5px, transparent 2.5px), radial-gradient(circle at 72% 24%, var(--color-gold) 0 2px, transparent 3px), radial-gradient(circle at 88% 78%, var(--color-gold) 0 1px, transparent 2px);"
+      />
+      <div class="relative mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:grid-cols-3 md:px-6">
+        {stats.map((stat, index) => (
+          <div class="reveal text-center" style={`animation-delay: ${index * 60}ms`}>
+            <p class="font-display text-4xl text-ink md:text-5xl">{stat.value}</p>
+            <p class="mt-2 text-sm text-stone">
+              <span
+                class:list={[
+                  'mr-2 inline-block size-1.5 rounded-full',
+                  index % 2 === 0 ? 'bg-red' : 'bg-gold',
+                ]}
+                aria-hidden="true"
+              />
+              {stat.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

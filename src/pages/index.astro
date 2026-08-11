@@ -1,36 +1,145 @@
 ---
 import Page from '../layouts/Page.astro';
+import Hero from '../components/home/Hero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import BeforeAfterSlider from '../components/islands/BeforeAfterSlider';
+import ServiceCard from '../components/ServiceCard.astro';
+import PromiseBlock from '../components/PromiseBlock.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import CTABand from '../components/CTABand.astro';
+import reviewsData from '../config/reviews.json';
+import type { Review } from '../config/reviews';
+import { site, isPending } from '../config/site';
+
+const title = "House Painters in Chicago's North Shore | Bold Coat";
+const description =
+  'Exterior and interior painting for Winnetka, Wilmette, and the North Shore. Cedar, brick, and stucco specialists. Request a free on-site estimate.';
+
+const reviews = reviewsData as Review[];
+const featuredReviews = reviews.slice(0, 3);
+const showReviewCount =
+  !isPending(site.aggregateReviews.count) && !isPending(site.aggregateReviews.rating);
+
+const services = [
+  {
+    title: 'Exterior Painting',
+    href: '/services/exterior-painting',
+    description: 'Cedar, brick, stucco, and Hardie that can take lake weather.',
+  },
+  {
+    title: 'Interior Painting',
+    href: '/services/interior-painting',
+    description: 'Clean prep and a finish that looks like it belongs in the room.',
+  },
+  {
+    title: 'Cabinet Painting',
+    href: '/services/cabinet-painting',
+    description: 'Kitchen and bath cabinets refinished without a full remodel.',
+  },
+  {
+    title: 'Fence & Deck Staining',
+    href: '/services/fence-deck-staining',
+    description: 'Stain and seal that holds through freeze and thaw.',
+  },
+  {
+    title: 'Commercial Painting',
+    href: '/services/commercial-painting',
+    description: 'Offices and storefronts painted around your schedule.',
+  },
+];
 ---
 
-<Page
-  title="House Painters in Chicago's North Shore | Bold Coat"
-  description="Premium exterior and interior painting for Winnetka, Wilmette, and the North Shore. Request a free on-site estimate from Bold Coat Painters."
-  canonicalPath="/"
->
-  <section class="bg-paper">
-    <div class="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
-      <p class="mb-3 text-label font-medium uppercase tracking-[0.08em] text-navy">
-        Phase 0 shell
+<Page title={title} description={description} canonicalPath="/">
+  <Hero />
+  <StatsBar />
+
+  <section class="bg-paper" aria-labelledby="slider-heading">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+      <h2 id="slider-heading" class="max-w-2xl text-[2rem] md:text-4xl">
+        See the difference careful prep makes
+      </h2>
+      <p class="mt-3 max-w-xl text-base text-ink/75">
+        Drag the handle to compare a weathered exterior with a finished coat. Project photos
+        replace these placeholders when the archive is ready.
       </p>
-      <h1 class="max-w-3xl text-[1.75rem] sm:text-4xl md:text-5xl">
-        Exterior and interior painting, done right.
-      </h1>
-      <p class="mt-5 max-w-xl text-lg text-ink/80">
-        Foundations are in place: design tokens, layouts, navbar, and footer. Homepage sections
-        land in Phase 1.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center gap-4">
-        <a
-          href="/contact"
-          class="inline-flex bg-red px-5 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
-        >
-          Free Estimate
-        </a>
-        <a href="/projects" class="text-base font-medium text-red hover:underline">
-          See our work
-        </a>
+      <div class="mt-8">
+        <BeforeAfterSlider client:visible />
       </div>
-      <div class="mt-12 aspect-[16/9] w-full max-w-3xl bg-cream" aria-hidden="true"></div>
     </div>
   </section>
+
+  <section class="bg-cream" aria-labelledby="services-heading">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Services</p>
+      <h2 id="services-heading" class="mt-3 text-[2rem] md:text-4xl">What we paint</h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((service, index) => (
+            <ServiceCard {...service} delay={index * 60} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <PromiseBlock />
+
+  <section class="bg-paper" aria-labelledby="featured-heading">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Featured project</p>
+      <h2 id="featured-heading" class="sr-only">Featured project</h2>
+      <div class="mt-6">
+        <ProjectCard
+          town="Winnetka"
+          service="Exterior"
+          title="Featured North Shore exterior"
+          scope="Case study photos and scope details land here when the project archive is ready."
+          href="/projects"
+        />
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps />
+
+  {
+    featuredReviews.length > 0 && (
+      <section class="bg-paper" aria-labelledby="reviews-heading">
+        <div class="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+          <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Reviews</p>
+          <h2 id="reviews-heading" class="mt-3 text-[2rem] md:text-4xl">
+            What homeowners say
+          </h2>
+          {showReviewCount && (
+            <p class="mt-3 text-base text-ink/75">
+              {site.aggregateReviews.rating} average from {site.aggregateReviews.count} reviews
+            </p>
+          )}
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            {featuredReviews.map((review, index) => (
+              <ReviewCard review={review} delay={index * 60} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="bg-cream" aria-labelledby="calc-heading">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+      <h2 id="calc-heading" class="text-[2rem] md:text-4xl">Get an instant ballpark</h2>
+      <p class="mt-3 max-w-xl text-base text-ink/75">
+        Wide public ranges for interior, exterior, and cabinet work. Your exact number still
+        comes from a free on-site visit.
+      </p>
+      <a href="/pricing" class="mt-5 inline-flex items-center gap-1 text-base font-medium text-red">
+        Open the painting cost calculator
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <CTABand />
 </Page>
