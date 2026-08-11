@@ -46,4 +46,28 @@ const cities = defineCollection({
   }),
 });
 
-export const collections = { services, cities };
+const projects = defineCollection({
+  loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    metaTitle: z.string().max(60),
+    description: z.string().min(140).max(160),
+    city: z.string(),
+    services: z.array(z.string()).min(1),
+    date: z.coerce.date(),
+    scopeSummary: z.string(),
+    surfaces: z.string(),
+    durationDays: z.number().int().positive(),
+    colorsUsed: z.array(
+      z.object({
+        brand: z.string(),
+        name: z.string(),
+      }),
+    ),
+    coverAlt: z.string(),
+    galleryAlts: z.array(z.string()).min(4).max(15),
+    hasBeforeAfter: z.boolean().default(false),
+  }),
+});
+
+export const collections = { services, cities, projects };

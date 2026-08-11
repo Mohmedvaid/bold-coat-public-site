@@ -24,6 +24,6 @@ Phases map 1:1 to the build order in `CLAUDE.md`. Do not start the next phase un
 
 ## Current phase
 
-**Phase 4: Pricing** complete on branch `feat/phase-4-pricing-calculator`. Next: **Phase 5 Projects**.
+**Phase 5: Projects** complete on branch `feat/phase-5-projects`. Next: **Phase 6 Blog**.
 
 Update this line when a phase completes.

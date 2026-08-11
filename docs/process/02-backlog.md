@@ -16,7 +16,7 @@ Status: `todo` | `doing` | `blocked` | `done`
 | B-006 | City template + Winnetka | 3 | done | Proof page first |
 | B-007 | Remaining 10 city pages | 3 | done | Unique prose per town |
 | B-008 | Pricing + calculator island | 4 | done | `approved: false` coming-soon UI shipped |
-| B-009 | Projects hub + detail | 5 | todo | Placeholder entries OK |
+| B-009 | Projects hub + detail | 5 | done | 4 placeholder case studies |
 | B-010 | Blog hub + post template | 6 | todo | |
 | B-011 | About, Contact, service-areas, legal | 7 | todo | |
 | B-012 | vercel.json redirects + sitemap | 8 | todo | Diff against live WP sitemap |
