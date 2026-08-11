@@ -1,0 +1,37 @@
+---
+interface Props {
+  items: { question: string; answer: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <div class="space-y-3">
+      {items.map((item) => (
+        <details class="group border border-cream bg-paper open:shadow-sm">
+          <summary class="cursor-pointer list-none px-5 py-4 text-base font-medium text-ink marker:content-none [&::-webkit-details-marker]:hidden">
+            <span class="flex items-center justify-between gap-4">
+              {item.question}
+              <svg
+                class="size-4 shrink-0 text-navy transition-transform group-open:rotate-180"
+                viewBox="0 0 12 12"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 4l4 4 4-4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+          </summary>
+          <p class="border-t border-cream px-5 py-4 text-base text-ink/80">{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  )
+}

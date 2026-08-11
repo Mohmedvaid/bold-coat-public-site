@@ -1,0 +1,132 @@
+---
+import { getCollection, render } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+import { site } from '../../config/site';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, metaTitle, description, summary, eyebrow, heroAlt, faqs, relatedCities } =
+  entry.data;
+
+const cityLinks = relatedCities
+  .map((slug) => site.cities.find((city) => city.slug === slug))
+  .filter((city): city is (typeof site.cities)[number] => Boolean(city));
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: title,
+  description: summary,
+  provider: {
+    '@type': 'HousePainter',
+    name: site.name,
+    url: site.url,
+    telephone: site.phone,
+  },
+  areaServed: cityLinks.map((city) => ({
+    '@type': 'City',
+    name: city.name,
+  })),
+  url: new URL(`/services/${entry.id}`, site.url).href,
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<Page title={metaTitle} description={description} canonicalPath={`/services/${entry.id}`}>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="bg-paper">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:px-6 md:py-20">
+      <div>
+        <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">{eyebrow}</p>
+        <h1 class="mt-3 text-[1.75rem] sm:text-4xl md:text-5xl">{title}</h1>
+        <p class="mt-5 max-w-xl text-lg text-ink/80">{summary}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex bg-red px-5 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
+          >
+            Free Estimate
+          </a>
+          <a href="/pricing" class="inline-flex items-center gap-1 text-base font-medium text-red">
+            See ballpark pricing
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+      <MediaPlaceholder aspect="aspect-[4/3]" label={heroAlt} />
+    </div>
+  </section>
+
+  <section class="bg-cream">
+    <div class="prose-service mx-auto max-w-3xl px-4 py-16 text-base leading-relaxed text-ink/85 md:px-6 md:py-20">
+      <Content />
+    </div>
+  </section>
+
+  <section class="bg-paper" aria-labelledby="service-faq-heading">
+    <div class="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-20">
+      <h2 id="service-faq-heading" class="text-[2rem] md:text-4xl">Frequently asked questions</h2>
+      <div class="mt-8">
+        <FAQ items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream" aria-labelledby="service-cities-heading">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+      <h2 id="service-cities-heading" class="text-[2rem] md:text-4xl">
+        Serving the North Shore
+      </h2>
+      <p class="mt-3 max-w-2xl text-base text-ink/75">
+        {title} available across our premium service towns.
+      </p>
+      <ul class="mt-8 flex flex-wrap gap-x-4 gap-y-2 text-base">
+        {
+          cityLinks.map((city) => (
+            <li>
+              <a href={`/${city.slug}`} class="text-red hover:underline">
+                {city.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6 text-sm text-stone">
+        <a href="/service-areas" class="text-red hover:underline">See all service areas</a>
+      </p>
+    </div>
+  </section>
+
+  <CTABand heading={`Ready to talk about ${title.toLowerCase()}?`} />
+</Page>
+
+<style>
+  .prose-service :global(p + p) {
+    margin-top: 1.25rem;
+  }
+</style>

@@ -24,6 +24,6 @@ Phases map 1:1 to the build order in `CLAUDE.md`. Do not start the next phase un
 
 ## Current phase
 
-**Phase 1: Homepage** complete on branch `feat/phase-1-homepage`. Next: **Phase 2 Services**.
+**Phase 2: Services** complete on branch `feat/phase-2-services`. Next: **Phase 3 Cities** (Winnetka proof first).
 
 Update this line when a phase completes.
