@@ -1,6 +1,6 @@
 # Brand logo assets
 
-**Status:** SVG masters checked into `public/brand/`. Site nav still uses the HTML wordmark in `Logo.astro` until you swap it to these files.  
+**Status:** Outlined Fraunces SVG masters in `public/brand/` (paths match live `Logo.astro` wordmark). Site nav still uses HTML `Logo.astro` until you swap it.  
 **Source of truth for colors:** `docs/02-design-system.md` (navy `#1F2A44`, cream `#F1EBE0`, ink `#1A1A1A`, red `#D9402E`, gold `#F2C94C`).
 
 ## What is in the repo now
@@ -8,12 +8,12 @@
 | File | Use |
 |---|---|
 | [`/brand/logo-wordmark.svg`](../../public/brand/logo-wordmark.svg) | Master wordmark (`currentColor` + red/gold dots) |
-| [`/brand/logo-wordmark-on-navy.svg`](../../public/brand/logo-wordmark-on-navy.svg) | Cream text for navy nav/footer |
-| [`/brand/logo-wordmark-on-paper.svg`](../../public/brand/logo-wordmark-on-paper.svg) | Ink text for light backgrounds |
+| [`/brand/logo-wordmark-on-navy.svg`](../../public/brand/logo-wordmark-on-navy.svg) | Cream outlined wordmark for navy nav/footer |
+| [`/brand/logo-wordmark-on-paper.svg`](../../public/brand/logo-wordmark-on-paper.svg) | Ink outlined wordmark for light backgrounds |
 | [`/brand/logo-mark.svg`](../../public/brand/logo-mark.svg) | Square mark (red + gold dots on navy) |
 | [`/favicon.svg`](../../public/favicon.svg) | Browser tab icon (same mark, 32 viewBox) |
 
-The live site wordmark you liked is the Fraunces treatment in `Logo.astro` (dots in both O letters). These SVGs match that idea. **Text is still live type**, not outlined paths. Before final WebP/PNG export, open the SVG in Figma or Illustrator, install Fraunces, convert text to outlines, then export. That locks the lettershapes so they do not depend on the viewer having the font.
+The live site wordmark is Fraunces 600 “BOLD COAT” with a **red** dot in the first O and a **gold** dot in the second O (`Logo.astro`). The SVG files are **outlined paths** from Fraunces 600 (not live `<text>`), so they look correct in Figma, browsers, and exports without installing the font.
 
 ## Do you need WebP of the logo?
 
@@ -54,13 +54,12 @@ So: keep SVG for nav/footer/favicon. Export WebP/PNG only for the pack below.
 
 ## Recommended export recipe (for you in Figma)
 
-1. Open `logo-wordmark-on-navy.svg` and `logo-mark.svg`.
-2. Install Fraunces, convert text to outlines.
-3. Export:
+1. Open `logo-wordmark-on-navy.svg` and `logo-mark.svg` (already outlined; no font install needed).
+2. Export:
    - `logo-mark-720.png` (720×720, navy square + dots) → GBP + schema
    - `apple-touch-icon.png` (180×180, opaque, same mark)
    - `og-default.jpg` (1200×630): navy background, cream wordmark centered or left, optional short line “North Shore painters”
-4. Keep SVG as the site source. Do not replace the header with a WebP logo.
+3. Keep SVG as the site source. Do not replace the header with a WebP logo.
 
 ## Performance notes
 

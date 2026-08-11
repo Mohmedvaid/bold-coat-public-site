@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Logo compare</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&display=swap" />
+  <style>
+    body { margin: 0; background: #151F33; color: #F1EBE0; font-family: system-ui, sans-serif; }
+    section { padding: 32px; border-bottom: 1px solid #1F2A44; }
+    h1 { font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A857D; }
+    .live {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      color: #F1EBE0;
+    }
+    .live .o { position: relative; display: inline-block; }
+    .live .dot {
+      position: absolute; left: 50%; top: 42%;
+      width: 6px; height: 6px; border-radius: 999px;
+      transform: translate(-50%, -50%);
+    }
+    .dot-red { background: #D9402E; }
+    .dot-gold { background: #F2C94C; }
+    img { height: 40px; display: block; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <section>
+    <h1>Live HTML wordmark (Logo.astro pattern)</h1>
+    <div class="live" aria-label="Bold Coat Painters">
+      B<span class="o">O<span class="dot dot-red"></span></span>LD&nbsp;C<span class="o">O<span class="dot dot-gold"></span></span>AT
+    </div>
+  </section>
+  <section>
+    <h1>Outlined SVG (logo-wordmark-on-navy.svg)</h1>
+    <img src="./logo-wordmark-on-navy.svg" alt="Bold Coat outlined SVG" height="40" />
+  </section>
+</body>
+</html>
