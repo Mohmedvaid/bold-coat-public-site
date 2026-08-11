@@ -25,6 +25,7 @@ Hard rules (em dashes, pricing silence, trust claims, a11y, perf) live only in `
 | [process/04-definition-of-done.md](process/04-definition-of-done.md) | Page and PR checklists |
 | [process/05-git-branching.md](process/05-git-branching.md) | Branches, commits, PRs |
 | [process/06-adr-index.md](process/06-adr-index.md) | Architecture decision records |
+| [process/07-status-handoff.md](process/07-status-handoff.md) | Where we left off, remaining launch work |
 
 ## Templates and living docs
 
