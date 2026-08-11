@@ -1,0 +1,191 @@
+---
+import { getCollection, render } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+import BlogMidCta from '../../components/BlogMidCta.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTABand from '../../components/CTABand.astro';
+import { site } from '../../config/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const data = entry.data;
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter((post) => post.id !== entry.id && post.data.category === data.category)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const words = entry.body?.split(/\s+/).filter(Boolean).length ?? 0;
+const readingMinutes = Math.max(1, Math.round(words / 200));
+const showToc = words > 1200 && headings.some((heading) => heading.depth >= 2);
+
+const published = data.date.toISOString();
+const modified = (data.updatedDate ?? data.date).toISOString();
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  description: data.description,
+  datePublished: published,
+  dateModified: modified,
+  author: {
+    '@type': 'Organization',
+    name: 'Bold Coat Painters Team',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: site.name,
+    url: site.url,
+  },
+  mainEntityOfPage: new URL(`/blog/${entry.id}`, site.url).href,
+};
+
+const faqSchema =
+  data.faqs && data.faqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: data.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      }
+    : null;
+---
+
+<Page title={data.metaTitle} description={data.description} canonicalPath={`/blog/${entry.id}`}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+
+  <article class="bg-paper">
+    <header class="mx-auto max-w-6xl px-4 pt-14 md:px-6 md:pt-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">
+        {data.category.charAt(0).toUpperCase() + data.category.slice(1)}
+      </p>
+      <h1 class="mt-3 max-w-3xl text-[1.75rem] sm:text-4xl md:text-5xl">{data.title}</h1>
+      <p class="mt-5 text-base text-stone">
+        Bold Coat Painters Team
+        <span class="mx-2" aria-hidden="true">·</span>
+        <time datetime={published}>
+          {
+            data.date.toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })
+          }
+        </time>
+        <span class="mx-2" aria-hidden="true">·</span>
+        {readingMinutes} min read
+      </p>
+      <div class="mt-8">
+        <MediaPlaceholder aspect="aspect-[21/9]" label={data.coverAlt} class="w-full" />
+      </div>
+    </header>
+
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[220px_minmax(0,1fr)] md:px-6 md:py-16">
+      {
+        showToc ? (
+          <nav class="hidden md:block" aria-label="Table of contents">
+            <div class="sticky top-28">
+              <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">On this page</p>
+              <ol class="mt-4 space-y-2 text-sm">
+                {headings
+                  .filter((heading) => heading.depth === 2)
+                  .map((heading) => (
+                    <li>
+                      <a class="text-red hover:underline" href={`#${heading.slug}`}>
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))}
+              </ol>
+            </div>
+          </nav>
+        ) : (
+          <div class="hidden md:block" aria-hidden="true" />
+        )
+      }
+
+      <div class="max-w-3xl">
+        <div class="prose-blog text-base leading-relaxed text-ink/85">
+          <Content />
+        </div>
+
+        <BlogMidCta />
+
+        {
+          data.faqs && data.faqs.length > 0 && (
+            <section class="mt-12" aria-labelledby="blog-faq-heading">
+              <h2 id="blog-faq-heading" class="font-display text-[2rem] text-ink">
+                FAQs
+              </h2>
+              <div class="mt-6">
+                <FAQ items={data.faqs} />
+              </div>
+            </section>
+          )
+        }
+
+        {
+          related.length > 0 && (
+            <section class="mt-12" aria-labelledby="related-heading">
+              <h2 id="related-heading" class="font-display text-[2rem] text-ink">
+                Related posts
+              </h2>
+              <ul class="mt-6 space-y-3">
+                {related.map((post) => (
+                  <li>
+                    <a class="text-red hover:underline" href={`/blog/${post.id}`}>
+                      {post.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </div>
+    </div>
+  </article>
+
+  <CTABand heading="Prefer to talk it through?" />
+</Page>
+
+<style>
+  .prose-blog :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-ink);
+  }
+  .prose-blog :global(p + p) {
+    margin-top: 1.25rem;
+  }
+  .prose-blog :global(a) {
+    color: var(--color-red);
+  }
+  .prose-blog :global(ul) {
+    margin-top: 1rem;
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  .prose-blog :global(li + li) {
+    margin-top: 0.5rem;
+  }
+</style>

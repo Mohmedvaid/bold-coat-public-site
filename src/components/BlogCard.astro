@@ -1,0 +1,48 @@
+---
+import MediaPlaceholder from './MediaPlaceholder.astro';
+
+interface Props {
+  title: string;
+  href: string;
+  description: string;
+  category: string;
+  date: Date;
+  coverAlt: string;
+  featured?: boolean;
+}
+
+const { title, href, description, category, date, coverAlt, featured = false } = Astro.props;
+const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
+---
+
+<article class:list={[featured ? 'grid gap-6 md:grid-cols-2 md:items-center' : 'flex flex-col']}>
+  <a href={href} class="block">
+    <MediaPlaceholder
+      aspect={featured ? 'aspect-[16/10]' : 'aspect-[16/9]'}
+      label={coverAlt}
+    />
+  </a>
+  <div class:list={[featured ? '' : 'mt-4 flex flex-1 flex-col']}>
+    <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">
+      {categoryLabel}
+      <span class="mx-2 text-stone" aria-hidden="true">·</span>
+      <time datetime={date.toISOString()}>
+        {
+          date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          })
+        }
+      </time>
+    </p>
+    <h2 class:list={['mt-2 font-display text-ink', featured ? 'text-3xl md:text-4xl' : 'text-2xl']}>
+      <a href={href} class="hover:text-navy">{title}</a>
+    </h2>
+    <p class="mt-3 text-base text-ink/75">{description}</p>
+    <a href={href} class="mt-4 inline-flex items-center gap-1 text-base font-medium text-red">
+      Read more
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>

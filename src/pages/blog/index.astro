@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import BlogFilter from '../../components/islands/BlogFilter';
+import CTABand from '../../components/CTABand.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const [featured, ...rest] = posts;
+
+const filterPosts = rest.map((post) => ({
+  id: post.id,
+  title: post.data.title,
+  href: `/blog/${post.id}`,
+  description: post.data.description,
+  category: post.data.category,
+  dateLabel: post.data.date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }),
+  coverAlt: post.data.coverAlt,
+}));
+
+const title = 'Painting Tips & Guides | Bold Coat Painters';
+const description =
+  'North Shore painting guides on cost, exteriors, interiors, colors, and projects. Practical advice from Bold Coat Painters, plus links to estimates and pricing.';
+---
+
+<Page title={title} description={description} canonicalPath="/blog">
+  <section class="bg-paper">
+    <div class="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Blog</p>
+      <h1 class="mt-3 max-w-3xl text-[1.75rem] sm:text-4xl md:text-5xl">
+        Guides for North Shore homeowners
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-ink/80">
+        Cost ranges, prep realities, and project notes written for Chicago's North Shore. The weekly
+        launch queue starts after the site ships. These sample posts prove the templates.
+      </p>
+
+      {
+        featured && (
+          <div class="mt-12 border-b border-cream pb-12">
+            <BlogCard
+              featured
+              title={featured.data.title}
+              href={`/blog/${featured.id}`}
+              description={featured.data.description}
+              category={featured.data.category}
+              date={featured.data.date}
+              coverAlt={featured.data.coverAlt}
+            />
+          </div>
+        )
+      }
+
+      <div class="mt-12">
+        <BlogFilter client:load posts={filterPosts} />
+      </div>
+    </div>
+  </section>
+
+  <CTABand heading="Want advice applied to your house?" />
+</Page>
