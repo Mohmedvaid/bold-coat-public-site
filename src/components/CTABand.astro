@@ -1,0 +1,38 @@
+---
+interface Props {
+  heading?: string;
+  buttonLabel?: string;
+  href?: string;
+}
+
+const {
+  heading = 'Ready for a finish that lasts?',
+  buttonLabel = 'Free Estimate',
+  href = '/contact',
+} = Astro.props;
+---
+
+<section class="relative bg-navy text-cream" aria-labelledby="cta-heading">
+  <svg
+    class="pointer-events-none absolute inset-x-0 top-0 h-8 w-full text-midnight"
+    viewBox="0 0 1200 40"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    <path
+      fill="currentColor"
+      d="M0 0h1200v8H280c-8 0-12 2-16 10-6 12-14 22-24 22s-18-10-24-22C212 10 208 8 200 8H0V0z"
+    ></path>
+  </svg>
+  <div class="mx-auto max-w-6xl px-4 py-16 text-center md:px-6 md:py-20">
+    <h2 id="cta-heading" class="mx-auto max-w-2xl font-display text-[2rem] text-cream md:text-4xl">
+      {heading}
+    </h2>
+    <a
+      href={href}
+      class="mt-8 inline-flex bg-red px-6 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
+    >
+      {buttonLabel}
+    </a>
+  </div>
+</section>

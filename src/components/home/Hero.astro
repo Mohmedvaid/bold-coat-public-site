@@ -1,0 +1,58 @@
+---
+import MediaPlaceholder from '../MediaPlaceholder.astro';
+import TrustBar from '../TrustBar.astro';
+---
+
+<section class="bg-paper">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:px-6 md:py-20">
+    <div>
+      <h1 class="max-w-xl text-[1.75rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-[3.5rem]">
+        Exterior and interior painting, done{' '}
+        <span class="relative inline-block">
+          right.
+          <svg
+            class="pointer-events-none absolute -bottom-1 left-0 h-3 w-full overflow-visible"
+            viewBox="0 0 120 12"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              class="brush-draw"
+              d="M2 8c18-4 36 3 54-1 16-4 32 2 50-2 6-1 10 1 12 2"
+              fill="none"
+              stroke="#1F2A44"
+              stroke-width="3"
+              stroke-linecap="round"
+            ></path>
+          </svg>
+        </span>
+      </h1>
+      <p class="mt-5 max-w-lg text-lg text-ink/80">
+        Careful prep and a lasting finish for North Shore homes in{' '}
+        <a href="/winnetka" class="text-red">Winnetka</a>,{' '}
+        <a href="/wilmette" class="text-red">Wilmette</a>,{' '}
+        <a href="/kenilworth" class="text-red">Kenilworth</a>, and{' '}
+        <a href="/glencoe" class="text-red">Glencoe</a>.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href="/contact"
+          class="inline-flex bg-red px-5 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
+        >
+          Free Estimate
+        </a>
+        <a href="/projects" class="inline-flex items-center gap-1 text-base font-medium text-red">
+          See our work
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="mt-8">
+        <TrustBar />
+      </div>
+    </div>
+    <MediaPlaceholder
+      aspect="aspect-[4/3]"
+      label="Freshly painted suburban home exterior, North Shore, photo coming soon"
+    />
+  </div>
+</section>

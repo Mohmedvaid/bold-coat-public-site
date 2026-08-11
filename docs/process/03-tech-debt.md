@@ -29,6 +29,8 @@ Log shortcuts the same day you take them. Silent debt becomes launch risk.
 | TD-005 | 2026-08-10 | S2 | Brand | Typed Logo wordmark until real SVG assets | Swap when Mohmed supplies logo files | open |
 | TD-006 | 2026-08-10 | S1 | NAP | Street address / postal empty pending GBP confirm | Fill site.ts address fields | open |
 | TD-007 | 2026-08-10 | S3 | Assets | Default scaffold favicon.ico still present; SVG favicon active | Remove ico or replace with brand set | open |
+| TD-008 | 2026-08-10 | S1 | Content | Homepage uses cream placeholders (hero, slider, cards) | Swap when photo archive arrives | open |
+| TD-009 | 2026-08-10 | S2 | Copy | Promise and process wording is draft until Mohmed approves | Replace with approved copy | open |
 
 ## Paydown cadence
 

@@ -1,0 +1,42 @@
+---
+const steps = [
+  {
+    day: '01',
+    title: 'Walkthrough and written scope',
+    detail: 'Day 1: we walk the house, note surfaces and prep, and send a clear scope before any paint opens.',
+  },
+  {
+    day: '02',
+    title: 'Protect, prep, prime',
+    detail: 'Days 2 and 3: floors and plantings covered, failed coatings removed, and primer where the surface needs it.',
+  },
+  {
+    day: '03',
+    title: 'Finish coats and walkthrough',
+    detail: 'Final days: even coats, a clean site, and a walkthrough you sign off before we pack up.',
+  },
+];
+---
+
+<section class="bg-cream" aria-labelledby="process-heading">
+  <div class="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+    <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Our process</p>
+    <h2 id="process-heading" class="mt-3 text-[2rem] md:text-4xl">How a job actually runs</h2>
+    <ol class="mt-12 grid gap-10 md:grid-cols-3">
+      {
+        steps.map((step, index) => (
+          <li class="reveal" style={`animation-delay: ${index * 60}ms`}>
+            <div
+              class="flex size-10 items-center justify-center rounded-full bg-navy font-display text-lg text-cream"
+              aria-hidden="true"
+            >
+              {step.day}
+            </div>
+            <h3 class="mt-4 text-2xl">{step.title}</h3>
+            <p class="mt-2 text-base text-ink/75">{step.detail}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

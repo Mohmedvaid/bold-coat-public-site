@@ -1,0 +1,18 @@
+---
+interface Props {
+  aspect?: string;
+  label?: string;
+  class?: string;
+}
+
+const { aspect = 'aspect-[16/9]', label, class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={['flex items-center justify-center bg-cream text-stone', aspect, className]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  {label && <span class="sr-only">{label}</span>}
+</div>

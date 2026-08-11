@@ -1,0 +1,27 @@
+---
+import type { Review } from '../config/reviews';
+
+interface Props {
+  review: Review;
+  delay?: number;
+}
+
+const { review, delay = 0 } = Astro.props;
+---
+
+<blockquote
+  class="reveal bg-paper p-6 shadow-sm"
+  style={`animation-delay: ${delay}ms`}
+>
+  <div class="mb-3 inline-flex text-gold" aria-label={`${review.rating} out of 5 stars`}>
+    {
+      Array.from({ length: review.rating }).map(() => (
+        <svg class="size-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M10 1.6l2.3 4.7 5.2.8-3.8 3.6.9 5.2L10 13.4 5.4 15.9l.9-5.2L2.5 7.1l5.2-.8L10 1.6z" />
+        </svg>
+      ))
+    }
+  </div>
+  <p class="text-base text-ink/85">“{review.quote}”</p>
+  <footer class="mt-4 text-sm text-stone">{review.firstName}, {review.town}</footer>
+</blockquote>
