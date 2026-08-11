@@ -1,0 +1,40 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../config/site';
+
+const title = 'Thank You | Bold Coat Painters';
+const description =
+  'Thanks for requesting a Bold Coat Painters estimate. Our team will follow up soon to schedule your free on-site visit across the North Shore.';
+---
+
+<Page title={title} description={description} canonicalPath="/thank-you" noindex>
+  <section class="bg-paper">
+    <div class="mx-auto max-w-3xl px-4 py-20 text-center md:px-6 md:py-28">
+      <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Thank you</p>
+      <h1 class="mt-3 text-[1.75rem] sm:text-4xl md:text-5xl">
+        We received your estimate request
+      </h1>
+      <p class="mx-auto mt-5 max-w-xl text-lg text-ink/80">
+        Our team will follow up to schedule an on-site visit. If you need us sooner, call{' '}
+        <a class="text-red" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          href="/"
+          class="inline-flex bg-red px-5 py-3 text-base font-medium text-paper transition-colors hover:bg-[#c73828]"
+        >
+          Back to home
+        </a>
+        <a href="/projects" class="inline-flex items-center gap-1 text-base font-medium text-red">
+          See projects
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'lead_submit', source: 'thank-you' });
+  </script>
+</Page>

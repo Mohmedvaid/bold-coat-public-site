@@ -51,6 +51,28 @@ export const site = {
     { name: 'Fence & Deck Staining', href: '/services/fence-deck-staining' },
     { name: 'Commercial Painting', href: '/services/commercial-painting' },
   ],
+  additionalAreas: [
+    'Chicago',
+    'Skokie',
+    'Evanston',
+    'Naperville',
+    'Schaumburg',
+    'Arlington Heights',
+    'Aurora',
+    'Barrington',
+    'Bolingbrook',
+    'Deerfield',
+    'Downers Grove',
+    'Elmhurst',
+    'La Grange',
+    'Niles',
+    'Oak Park',
+    'Oakbrook Terrace',
+    'Plainfield',
+    'River Forest',
+    'Wheaton',
+    'Western Springs',
+  ],
 } as const;
 
 export function isPending(value: unknown): value is Pending {

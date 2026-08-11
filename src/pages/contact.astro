@@ -1,0 +1,45 @@
+---
+import Page from '../layouts/Page.astro';
+import EstimateForm from '../components/islands/EstimateForm';
+import { site } from '../config/site';
+
+const title = 'Free Painting Estimate | Bold Coat Painters';
+const description =
+  'Request a free on-site painting estimate from Bold Coat Painters. North Shore exteriors, interiors, cabinets, and decks. Call or send project details today.';
+---
+
+<Page title={title} description={description} canonicalPath="/contact">
+  <section class="bg-paper">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 md:px-6 md:py-20">
+      <div>
+        <p class="text-label font-medium uppercase tracking-[0.08em] text-navy">Contact</p>
+        <h1 class="mt-3 text-[1.75rem] sm:text-4xl md:text-5xl">
+          Request a free on-site estimate
+        </h1>
+        <p class="mt-5 text-lg text-ink/80">
+          Tell us about the home and the work you are considering. We follow up to schedule a
+          walkthrough and send a written scope.
+        </p>
+        <ul class="mt-8 space-y-3 text-base text-ink/80">
+          <li>
+            Phone:{' '}
+            <a class="text-red" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+          </li>
+          <li>
+            Email:{' '}
+            <a class="text-red" href={`mailto:${site.email}`}>{site.email}</a>
+          </li>
+          <li>
+            Serving Chicago's North Shore and nearby western suburbs.{' '}
+            <a class="text-red" href="/service-areas">See service areas</a>
+          </li>
+        </ul>
+        <p class="mt-6 text-base text-ink/75">
+          Prefer a ballpark first?{' '}
+          <a class="text-red" href="/pricing">Open the painting cost calculator</a>.
+        </p>
+      </div>
+      <EstimateForm client:load />
+    </div>
+  </section>
+</Page>

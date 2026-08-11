@@ -18,7 +18,7 @@ Status: `todo` | `doing` | `blocked` | `done`
 | B-008 | Pricing + calculator island | 4 | done | `approved: false` coming-soon UI shipped |
 | B-009 | Projects hub + detail | 5 | done | 4 placeholder case studies |
 | B-010 | Blog hub + post template | 6 | done | Templates + 5 sample posts |
-| B-011 | About, Contact, service-areas, legal | 7 | todo | |
+| B-011 | About, Contact, service-areas, legal | 7 | done | About, Contact form, service-areas, legal, thank-you |
 | B-012 | vercel.json redirects + sitemap | 8 | todo | Diff against live WP sitemap |
 | B-013 | `/api/lead` + thank-you + GTM | 9 | todo | Ask Mohmed for Zapier + Turnstile secrets |
 
