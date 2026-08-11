@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="bc-mark-title">
+  <title id="bc-mark-title">Bold Coat</title>
+  <!--
+    Brand mark / app icon. Reads at favicon size. Prefer this over the full wordmark
+    anywhere the logo is shown under ~48px wide.
+  -->
+  <rect width="64" height="64" rx="12" fill="#1F2A44"/>
+  <circle cx="24" cy="32" r="7" fill="#D9402E"/>
+  <circle cx="40" cy="32" r="7" fill="#F2C94C"/>
+</svg>
