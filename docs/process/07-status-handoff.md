@@ -85,6 +85,8 @@ Forms today: Contact POSTs `/api/lead` and falls back to phone when the endpoint
 - Backlog: [02-backlog.md](02-backlog.md)
 - Tech debt: [03-tech-debt.md](03-tech-debt.md)
 - Definition of done: [04-definition-of-done.md](04-definition-of-done.md)
+- Status handoff: [07-status-handoff.md](07-status-handoff.md)
+- SEO / market research: [../research/2026-08-chicagoland-seo-markets.md](../research/2026-08-chicagoland-seo-markets.md)
 - Product specs: [docs/01](../01-brief.md) through [docs/05](../05-calculator-spec.md)
 - Hard rules: [CLAUDE.md](../../CLAUDE.md)
 
